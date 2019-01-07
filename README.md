@@ -33,7 +33,7 @@ The recommended way to install the NATS server is to [download](http://nats.io/d
 
 You can connect to a public NATS server that is running at our demo site: [nats://demo.nats.io:4222](nats://demo.nats.io:4222), and a secure version at [tls://demo.nats.io:4443](nats://demo.nats.io:4443). See the [protocol](#protocol) section for usage.
 
-### Build
+### Build (必看)
 
 You can build the latest version of the server from the `master` branch. The master branch generally should build and pass tests, but may not work correctly in your environment. Note that stable branches of operating system packagers provided by your OS vendor may not be sufficient.
 
@@ -44,7 +44,7 @@ You need [*Go*](http://golang.org/) version 1.9+ [installed](https://golang.org/
 - Run `go build` inside the `/nats-io/gnatsd` directory. A successful build produces no messages and creates the server executable `gnatsd` in the directory.
 - Run `go test ./...` to run the unit regression tests.
 
-## Running
+## Running (必看)
 
 To start the NATS server with default settings (and no authentication or clustering), you can invoke the `gnatsd` binary with no [command line options](#command-line-arguments) or [configuration file](#configuration-file).
 
@@ -115,37 +115,9 @@ gnatsd -sl stop=<pid>
 gnatsd -sl stop=/path/to/pidfile
 ```
 
-See the [Windows Service](#windows-service) section for information on signaling the NATS server on Windows.
+## 移除Windows設定
 
-### Windows Service
-
-The NATS server supports running as a Windows service. In fact, this is the recommended way of running NATS on Windows. There is currently no installer and instead users should use `sc.exe` to install the service:
-
-```batch
-sc.exe create gnatsd binPath= "%NATS_PATH%\gnatsd.exe [gnatsd flags]"
-sc.exe start gnatsd
-```
-
-The above will create and start a `gnatsd` service. Note that the gnatsd flags should be passed in when creating the service. This allows for running multiple NATS server configurations on a single Windows server by using a 1:1 service instance per installed NATS server service. Once the service is running, it can be controlled using `sc.exe` or `gnatsd.exe -sl`:
-
-```batch
-REM Reload server configuration
-gnatsd.exe -sl reload
-
-REM Reopen log file for log rotation
-gnatsd.exe -sl reopen
-
-REM Stop the server
-gnatsd.exe -sl stop
-```
-
-The above commands will default to controlling the `gnatsd` service. If the service is another name, it can be specified:
-
-```batch
-gnatsd.exe -sl stop=<service name>
-```
-
-## Command line arguments
+## Command line arguments (必看)
 
 The NATS server accepts command line arguments to control its behavior. Usage is shown below. Note that command line arguments override those items in the [configuration file](#configuration-file).
 
@@ -197,7 +169,7 @@ Common Options:
         --help_tls                   TLS help
 ```
 
-## Configuration file
+## Configuration file (必看)
 
 Typically you configure the NATS server using a configuration file, an example of which is shown below. See also the [server configuration file](http://nats.io/documentation/managing_the_server/configuration/) documentation for details on the configuration language.
 
