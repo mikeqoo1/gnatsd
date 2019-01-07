@@ -826,6 +826,8 @@ If you want the server to enforce and require client certificates as well via th
 
 ### Bcrypt
 
+#(產生密碼相關  go run ./util/mkpasswd.go -p 密碼？ 需要把結果回貼到設定擋上)
+
 In addition to TLS functionality, the server now also supports bcrypt for passwords and tokens. This is transparent and you can simply replace the plaintext password in the configuration with the bcrypt hash, the server will automatically utilize bcrypt as needed.
 
 There is a utility bundled under /util/mkpasswd. By default with no arguments it will generate a secure password and the associated hash. This can be used for a password or a token in the configuration. If you already have a password selected, you can supply that on stdin with the -p flag.
