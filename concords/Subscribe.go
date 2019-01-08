@@ -10,7 +10,7 @@ import (
 )
 
 func usage() {
-	log.Fatalf("Usage: nats-pub [-s server (%s)] <主題> <訊息> \n", "127.0.0.1:6016")
+	log.Fatalf("Usage: nats-pub [-s server (%s)] <主題> \n", "127.0.0.1:6016")
 }
 
 func printMsg(m *nats.Msg, i int) {
